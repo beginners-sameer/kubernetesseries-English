@@ -1,0 +1,16 @@
+docker swarm init --advertise-addr $(hostname -i)
+docker node ls
+
+
+git clone https://github.com/docker/example-voting-app
+cd example-voting-app
+
+cat docker-stack.yml
+
+docker stack deploy --compose-file=docker-stack.yml voting_stack
+
+docker stack ls
+docker stack services voting_stack
+docker service ps voting_stack_vote
+
+docker service scale voting_stack_vote=5
