@@ -1,0 +1,22 @@
+Concepts in this exercise:
+
+Docker engine
+Containers & images
+Image registries and Docker Hub
+Container isolation
+
+List of Commands : 
+
+docker container run hello-world
+docker image pull alpine
+docker image ls
+docker container run alpine ls -l
+docker container run alpine echo "hello from alpine"
+docker container run alpine /bin/sh
+docker container run -it alpine /bin/sh
+docker container ls
+docker container ls -a
+docker container run -it alpine /bin/ash
+docker container run alpine ls
+docker container start <container ID>
+docker container exec <container ID> ls
