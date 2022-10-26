@@ -1,0 +1,90 @@
+docker container run -ti ubuntu bash
+
+
+apt-get update
+apt-get install -y figlet
+figlet "hello docker"
+
+docker container ls -a
+
+docker container commit CONTAINER_ID
+
+docker image ls
+
+docker image tag <IMAGE_ID> ourfiglet
+docker image ls
+
+docker container run ourfiglet figlet hello
+
+
+var os = require("os");
+var hostname = os.hostname();
+console.log("hello from " + hostname);
+
+
+FROM alpine
+RUN apk update && apk add nodejs
+COPY . /app
+WORKDIR /app
+CMD ["node","index.js"]
+
+
+docker image build -t hello:v0.1 .
+
+docker container run hello:v0.1
+
+
+docker image history <image ID>
+
+
+echo "console.log(\"this is v0.2\");" >> index.js
+
+docker image build -t hello:v0.2 .
+
+docker image pull alpine
+
+docker image inspect alpine
+
+______________________
+
+Python Hello World File:
+
+from flask import Flask
+import os
+app = Flask(__name__)
+@app.route('/')
+
+def hello():
+    return ('\nHello from Container World! \n\n')
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080, debug=True)
+
+
+You will face the flask issue at that time, please run this command
+
+pip3 install flask
+
+then you run the python program which should work.
+
+_____________________
+
+Dockerfile:
+
+FROM python:2.7-onbuild
+EXPOSE 8080
+CMD [ "python", "pythonhelloworld.py"]
+
+______________________
+
+requirements.txt:
+
+flask
+
+______________________
+
+
+docker build -t givesomelocalname .  // this will build the image locally
+
+docker container run --name pythoncontainer -p 8080:8080 imagename
+
+curl localhost:8080
