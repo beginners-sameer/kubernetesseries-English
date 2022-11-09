@@ -1,0 +1,37 @@
+About Docker Networking :
+1. Networking Basics
+2. Bridge Networking
+3. Overlay Networking
+
+
+List of Commands:
+
+docker network
+docker network ls
+docker network inspect bridge
+docker info
+brctl show
+ip a 
+
+
+docker run -dt ubuntu sleep infinity
+brctl show
+apt-get update && apt-get install -y iputils-ping
+
+
+docker run --name web1 -d -p 8080:80 nginx
+
+
+docker swarm init --advertise-addr $(hostname -i)
+docker node ls
+docker network create -d overlay overnet
+docker network inspect sameerovernet
+
+docker service create --name myservice \
+--network sameerovernet \
+--replicas 2 \
+ubuntu sleep infinity
+
+
+docker service ls
+docker service ps myservice
