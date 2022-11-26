@@ -1,0 +1,74 @@
+Docker Orchestration:
+
+docker run -dt ubuntu sleep infinity
+docker ps
+
+//Create a Manager Node - initialize the swarm
+docker swarm init --advertise-addr $(hostname -i)
+
+docker info
+
+//Join worker Nodes to the Swarm
+You can get this join command from the Manager node as soon as you run the above command
+
+
+docker swarm join-token worker    //  command on the Manager node to get it again.
+
+
+docker node ls
+
+//Deploy application across multiple hosts
+docker service create --name sleep-app ubuntu sleep infinity
+docker service ls
+
+//Scale the Application
+docker service update --replicas 7 sleep-app
+
+docker service ps sleep-app
+
+
+docker service update --replicas 4 sleep-app
+
+//Drain a node and reschedule the containers
+docker node ls
+
+You will be taking node2 out of service for maintenance.
+
+docker ps   // run it on node2
+
+docker node update --availability drain yournode2id
+
+
+docker node ls
+
+
+docker ps  // run it on node2
+
+docker service ps sleep-app   
+
+Cleaning-Up
+docker service rm sleep-app
+docker ps
+
+docker swarm leave --force
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
