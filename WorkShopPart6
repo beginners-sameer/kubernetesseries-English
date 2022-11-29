@@ -1,0 +1,55 @@
+Docker Volume Overview:
+docker container run --name c1 -ti alpine sh
+
+mkdir /data && cd /data && touch hello.txt
+
+exit
+
+docker container inspect c1   // Look for GraphDriver
+
+
+docker container stop c1
+docker container rm c1
+
+
+Dockerfile:
+
+FROM alpine
+VOLUME ["/data"]
+ENTRYPOINT ["/bin/sh"]
+
+
+docker image build -t img1 .
+docker container run --name c2 -ti img1
+
+cd /data
+touch hello.txt
+ls
+
+
+docker container ls
+
+docker container inspect c2   // Look for Mounts
+
+docker container stop c2 && docker container rm c2
+
+
+Defining Volume at runtime:
+docker container run --name c3 -d -v /data alpine sh -c 'ping 8.8.8.8 > /data/ping.txt'
+docker contianer inspect c3 // Look for Mounts
+
+
+docker volume --help
+docker volume create --name html
+docker volume ls
+docker volume inspect html
+
+
+docker container run --name www -d -p 8080:80 -v html:/usr/share/nginx/html nginx
+ls /var/lib/docker/volumes/html/_data
+
+
+
+
+
+
