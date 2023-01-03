@@ -1,3 +1,16 @@
 1. Install Docker Desktop from https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe 
 2. Enable Kubernetes by clicking settings in Docker Desktop , Choose Kubernetes and enable it.
 3. Try to run docker or kubectl commands in powershell, dos prompt or git bash.
+
+
+4. Try to get Ubuntu from Microsoft Store.
+5. 
+To set v2 as the default version for future installations, run:
+
+wsl.exe --set-default-version 2
+
+
+wsl --unregister Ubuntu-22.04
+
+
+
