@@ -8,9 +8,9 @@
 To set v2 as the default version for future installations, run:
 
 wsl.exe --set-default-version 2
+wls -l -v
+wsl --unregister Ubuntu
 
-
-wsl --unregister Ubuntu-22.04
 
 
 
